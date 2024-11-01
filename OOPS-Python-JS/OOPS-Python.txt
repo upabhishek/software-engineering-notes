@@ -1,0 +1,172 @@
+OOPS Concept - Python
+
+Defination :
+
+Object-Oriented Programming (OOP) is a programming paradigm that organizes code by bundling related data and functions together into objects, which represent real-world entities. The key principles of OOP are encapsulation, inheritance, polymorphism, and abstraction, commonly referred to as the four pillars of OOP.
+
+Types of OOPS :
+1. Abstraction
+2. Encapsulation
+3. Inheritance
+4. Polymorphism
+
+
+topics :
+
+Class : 
+
+A class is a blueprint or template for creating object. It defines a set of attributes and methods that created objects(instances) will have. In Python, you define a class using the class keywords
+
+example :
+
+class Car:
+    # class attribute
+    wheels = 4  
+
+    # method
+    def drive(self):
+        print("The car is driving.")
+
+
+Object:
+
+A object is an instance of a class when a class is created it can be used for instances(create) multiple objects, each with its own unique data but based on the structure defined by class 
+
+
+example :
+
+my_car = Car()
+
+
+__init__ :
+
+the init method is the special method in python known as constructor. It initializes an objects attributes when an object is created. This method is automatically called when an object is instantiated. You define it with the __init__ keyword, and it can take arguments to set up an object’s initial state.
+
+
+example :
+
+class Car:
+    def __init__(self,color,model):
+	    self.color = color
+		self.model = model
+		
+	def drive(self):
+	    print(f"The {self.color} {self.model} is driving.")
+		
+		
+
+#calling
+my_car = Car("red", "Toyota")
+print(my_car.color)  # Output: red
+print(my_car.model)  # Output: Toyota
+my_car.drive()
+
+
+
+Self keyword in python :
+
+The self keyword represents the instance of the class and is used to access instance attributes and methods within the class. It must be the first parameter in instance methods (like __init__ and other methods) but does not need to be passed when calling the method
+
+
+example :
+
+class Car:
+    def __init__(self, color, model):
+        self.color = color
+        self.model = model
+
+    def drive(self):
+        print(f"The {self.color} {self.model} is driving.")
+		
+	
+
+Methods :
+
+A method is a function that is defined inside a class and is associated with the objects (or instances) of that class. Methods are used to define the behaviors or actions that an object of a class can perform. They allow objects to interact with or manipulate their own data, which is encapsulated within the object as attributes.
+
+In other words, a method is similar to a function, but it is specifically designed to operate on instances of a class, with the ability to access and modify the instance's attributes and other methods.
+
+Key Points About Methods:
+
+1. Defined within a class: Methods are written inside a class block and are intended to work with instances of that class.
+2. Called on an object: Methods are invoked using the syntax object.method(), where object is an instance of the class.
+3. Self-parameter: Most methods in Python use self as their first parameter, which represents the instance of the class calling the method. This allows the method to access instance-specific data and other methods.
+4. Encapsulation: Methods help encapsulate functionality that is specific to the class and work with the data related to instances of that class.
+
+
+Types of Methods:
+
+Instance Method: 
+
+An instance method is a method that operates on an instance of a class. It is the most common type of method, and it uses the self parameter to access instance-specific data, meaning it can read and modify instance attributes. Instance methods are tied to a particular instance of a class.
+
+Defining: Defined with def and the self parameter.
+
+Access: Can access instance attributes and other instance methods within the class.
+
+Use Case: When you need to work with data specific to an instance.
+
+Example :
+
+class Dog:
+    def __init__(self, name):
+        self.name = name
+
+    def bark(self):
+        print(f"{self.name} is barking.")
+
+
+dog = Dog("Buddy")
+dog.bark()  # Output: Buddy is barking.
+
+
+Class Method: 
+
+A class method is a method that operates on the class itself rather than on an instance. Class methods use the cls parameter to refer to the class, allowing them to modify or access class-level data (attributes that are shared across all instances of the class). They are marked with the @classmethod decorator.
+
+Defining: Defined with @classmethod and the cls parameter.
+
+Access: Can access class attributes and other class methods but cannot modify instance-specific data.
+
+Use Case: When you need to work with data that applies to all instances of the class or want to create alternative constructors.
+
+class Dog:
+    species = "Canis lupus familiaris"  # class attribute
+
+    def __init__(self, name):
+        self.name = name
+
+    @classmethod
+    def get_species(cls):
+        return cls.species
+
+print(Dog.get_species())  # Output: Canis lupus familiaris
+
+
+
+Static Method: 
+
+A static method is a method that does not operate on an instance or class level. It behaves like a regular function but is included in the class for logical grouping. Static methods do not receive self or cls parameters and cannot modify class or instance state.
+	
+
+Defining: Defined with @staticmethod and no self or cls parameter.
+Access: Does not access or modify instance or class attributes.
+Use Case: When a method performs a task that is related to the class but doesn’t require access to the class or its instances.
+
+class Dog:
+    @staticmethod
+    def sound():
+        return "Bark"
+
+print(Dog.sound())  # Output: Bark
+
+
+Summary :
+
+Class: Blueprint for objects, defined with class.
+Object: Instance of a class, created by calling the class.
+__init__: Constructor method that initializes object attributes.
+self: Represents the instance of the class and allows access to instance attributes and methods within the class.
+Instance Method: Accesses and modifies instance data. Uses self.
+Class Method: Accesses and modifies class-level data. Uses cls and @classmethod.
+Static Method: Independent function within a class, does not access or modify instance or class data. Uses @staticmethod.
