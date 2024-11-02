@@ -1,0 +1,279 @@
+Solid Principles
+
+Definition:
+
+The SOLID principles are a set of five design principles that guide software development to make code more understandable, flexible, and maintainable.
+
+5 Principles of Solid:
+
+1. Single Responsibility Principle (SRP)
+2. Open/Closed Principle (OCP)
+3. Liskov Substitution Principle (LSP)
+4. Interface Segregation Principles (ISP)
+5. Dependency Inversion Principles (DIP)
+
+Topics:
+
+1. Single Responsibility Principle (SRP)
+
+Definition: A class should have only one reason to change, meaning it should have only one job or responsibility.
+
+Issue: When a class has multiple responsibilities, it can become difficult to maintain. Changes in one responsibility could unintentionally affect another, leading to bugs.
+
+Solution: Break down the class into smaller classes, each with a single responsibility.
+
+Example: Let's say we have an Invoice class that handles both the data of the invoice and printing it to the console. This violates SRP since the Invoice class is handling two responsibilities. 
+
+Python Code (Before SRP):
+
+class Invoice:
+    def __init__(self, amount):
+        self.amount = amount
+
+    def calculate_total(self):
+        return self.amount * 1.18  # Tax calculation
+
+    def print_invoice(self):
+        print(f"Invoice Total: {self.calculate_total()}")
+		
+
+Python Code (After SRP): Separate the printing logic into its own InvoicePrinter class.
+
+class Invoice:
+    def __init__(self, amount):
+        self.amount = amount
+
+    def calculate_total(self):
+        return self.amount * 1.18  # Tax calculation
+
+
+class InvoicePrinter:
+    def print_invoice(self, invoice: Invoice):
+        print(f"Invoice Total: {invoice.calculate_total()}")
+
+# Usage
+invoice = Invoice(100)
+printer = InvoicePrinter()
+printer.print_invoice(invoice)
+
+
+2. Open/Closed Principle (OCP)
+
+Definition: A class should be open for extension but closed for modification.
+
+Issue: When we need to add new functionality, modifying existing code could introduce new bugs.
+
+Solution: Design the system so new functionality can be added without changing existing code, typically using inheritance or interfaces.
+
+Example: Consider a Discount class that calculates discounts. Adding new types of discounts directly in the class would require changing the code each time.
+
+Python Code (Before OCP):
+
+class Discount:
+    def calculate(self, amount, discount_type):
+        if discount_type == "seasonal":
+            return amount * 0.1
+        elif discount_type == "clearance":
+            return amount * 0.5
+
+
+Python Code (After OCP): Introduce a Discount interface and create classes for each discount type.
+
+from abc import ABC, abstractmethod
+
+class Discount(ABC):
+    @abstractmethod
+    def calculate(self, amount):
+        pass
+
+class SeasonalDiscount(Discount):
+    def calculate(self, amount):
+        return amount * 0.1
+
+class ClearanceDiscount(Discount):
+    def calculate(self, amount):
+        return amount * 0.5
+
+# Usage
+discount = SeasonalDiscount()
+print(discount.calculate(100))
+
+
+3. Liskov Substitution Principle (LSP)
+Definition: Subtypes should be substitutable for their base types without altering the correctness of the program.
+
+Issue: If subclasses violate the expected behavior of the superclass, it can lead to unexpected behavior.
+
+Solution: Ensure derived classes implement all expected behaviors of the base class without changing any functionality.
+
+Example: A Rectangle class with a subclass Square. If Square overrides the set_width or set_height methods of Rectangle, it may break LSP.
+
+
+Python Code (Before LSP):
+
+class Vehicle:
+    def start_engine(self):
+        print("Engine started")
+
+    def stop_engine(self):
+        print("Engine stopped")
+
+class Car(Vehicle):
+    def drive(self):
+        print("Driving car")
+
+class Bicycle(Vehicle):
+    def pedal(self):
+        print("Pedaling bicycle")
+
+# Usage
+car = Car()
+car.start_engine()  # This makes sense
+car.drive()
+
+bicycle = Bicycle()
+bicycle.start_engine()  # This does not make sense for a bicycle!
+bicycle.pedal()
+
+
+Python Code (After LSP): Use composition instead of inheritance.
+
+# Base class for all vehicles
+class Vehicle:
+    def move(self):
+        print("Moving vehicle")
+
+# Class for vehicles with engines
+class EngineVehicle(Vehicle):
+    def start_engine(self):
+        print("Engine started")
+
+    def stop_engine(self):
+        print("Engine stopped")
+
+# Car has an engine, so it can inherit from EngineVehicle
+class Car(EngineVehicle):
+    def drive(self):
+        print("Driving car")
+
+# Bicycle does not have an engine, so it only inherits from Vehicle
+class Bicycle(Vehicle):
+    def pedal(self):
+        print("Pedaling bicycle")
+
+# Usage
+car = Car()
+car.start_engine()  # This now makes sense for a car
+car.drive()
+
+bicycle = Bicycle()
+# bicycle.start_engine()  # This would cause an error because Bicycle doesn't have an engine
+bicycle.pedal()
+
+
+
+4. Interface Segregation Principle (ISP)
+Definition: Clients should not be forced to depend on interfaces they do not use.
+
+Issue: If a class is forced to implement methods it doesn’t need, it adds unnecessary complexity.
+
+Solution: Split large interfaces into smaller, more specific ones.
+
+Example: A Worker interface that includes work and eat methods. A robot worker does not need to eat.
+
+Python Code (Before ISP):
+
+class Worker:
+    def work(self):
+        pass
+
+    def eat(self):
+        pass
+
+class HumanWorker(Worker):
+    def work(self):
+        print("Working hard.")
+
+    def eat(self):
+        print("Eating lunch.")
+
+class RobotWorker(Worker):
+    def work(self):
+        print("Working hard.")
+
+    def eat(self):
+        pass  # Not needed
+
+
+Python Code (After ISP):
+
+class Workable:
+    def work(self):
+        pass
+
+class Eatable:
+    def eat(self):
+        pass
+
+class HumanWorker(Workable, Eatable):
+    def work(self):
+        print("Working hard.")
+
+    def eat(self):
+        print("Eating lunch.")
+
+class RobotWorker(Workable):
+    def work(self):
+        print("Working hard.")
+
+
+
+
+5. Dependency Inversion Principle (DIP)
+Definition: High-level modules should not depend on low-level modules. Both should depend on abstractions.
+
+Issue: If a high-level class depends directly on a low-level class, it becomes difficult to make changes to the low-level class without impacting the high-level class.
+
+Solution: Use interfaces or abstractions so that high-level and low-level modules are decoupled.
+
+Example: An EmailNotification class depends directly on SMTPService for sending emails, making it hard to change the email service.
+
+Python Code (Before DIP):
+
+class SMTPService:
+    def send_email(self, message):
+        print("Sending email:", message)
+
+class EmailNotification:
+    def __init__(self):
+        self.email_service = SMTPService()
+
+    def notify(self, message):
+        self.email_service.send_email(message)
+
+
+
+Python Code (After DIP):
+
+from abc import ABC, abstractmethod
+
+class EmailService(ABC):
+    @abstractmethod
+    def send_email(self, message):
+        pass
+
+class SMTPService(EmailService):
+    def send_email(self, message):
+        print("Sending email:", message)
+
+class EmailNotification:
+    def __init__(self, email_service: EmailService):
+        self.email_service = email_service
+
+    def notify(self, message):
+        self.email_service.send_email(message)
+
+# Usage
+smtp_service = SMTPService()
+notification = EmailNotification(smtp_service)
+notification.notify("Hello!")
