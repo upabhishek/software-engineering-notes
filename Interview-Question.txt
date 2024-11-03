@@ -1,0 +1,151 @@
+https://dorey.github.io/JavaScript-Equality-Table/
+
+js questions
+
+basic
+
+let, const and var  --Done
+type conversion and coercion --Done
+== vd === --Done
+es5,es6 and plus --Done
+function declaration vs function expression --Done
+Arrow Function -Done
+Function calling other function -Done
+Array and object  operations --Done
+all types of loops  --Done
+
+
+Intermediate:
+
+Javascript engines and runtime --done
+JIT Compiler --done
+the call stack of js --Done
+Scope - done
+Hoisting and tdz --Done
+this keyword
+regular vs arrow function
+Primitive and object types
+
+Destructuring
+Rest operator
+spread operator
+short circuiting and null coelessing
+
+Looping Arrays and objects
+
+Map, filter and reduce
+
+
+ Advanced 
+
+Functions :
+
+Arguments 
+first class and higher order function 
+function returning functions
+the call and apply method
+the bind method
+immediately invoked function
+closures and lexical scope
+
+oops and protype chaining 
+setters and getters 
+static methods
+
+promisses async await 
+event loop 
+error handling
+
+
+-----------------------------------------------
+
+
+Node js Questions :
+
+basic 
+
+Installation, npm initialization
+basic express running app
+The Node Lifecycle & Event Loop
+Controlling the Node.js Process
+Understanding Requests
+Routing Requests
+Understanding Event Driven Code Execution
+Blocking and Non-Blocking Code
+Node.js - Looking Behind the Scenes
+Using the Node Modules System
+
+
+Express: 
+
+What is Express.js?
+How Middleware Works
+Express.js - Looking Behind the Scenes
+Handling Different Routes
+Parsing Incoming Requests
+Limiting Middleware Execution to POST Requests
+What is the MVC?
+
+
+Session and cookies
+What is a Cookie?
+Setting a Cookie
+Manipulating Cookies
+Configuring Cookies
+
+What is a Session?
+Initializing the Session Middleware
+Using the Session Middleware
+
+Deleting a Cookie
+
+
+Authentication
+
+What is Authentication?
+How is Authentication Implemented?
+
+Using Middleware to Protect Routes
+Understanding CSRF Attacks
+Adding CSRF Protection
+
+Validation"
+Why Should We Use Validation?
+How to Validate Input?
+Setup & Basic Validation
+Using Validation Error Messages
+Sanitizing Data
+
+
+Error Handling:
+
+Types of Errors & Error Handling
+Using the Express.js Error Handling Middleware
+
+how to add pagination
+
+
+
+
+Rest API:
+What are REST APIs and why do we use Them?
+Understanding Routing & HTTP Methods
+REST APIs - The Core Principles
+Creating our REST API Project & Implementing the Route Setup
+REST APIs, Clients & CORS Errors
+
+
+Web socket :
+What Are Websockets & Why Would You Use Them?
+Setting Up Socket.io on the Server
+Establishing a Connection From the Client
+Identifying Realtime Potential
+Synchronizing POST Additions
+
+
+
+-----------------------------------------------------------------------------
+
+Mongodb:
+
+
