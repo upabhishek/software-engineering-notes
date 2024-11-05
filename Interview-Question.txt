@@ -6,7 +6,7 @@ basic
 
 let, const and var  --Done
 type conversion and coercion --Done
-== vd === --Done
+== vs === --Done
 es5,es6 and plus --Done
 function declaration vs function expression --Done
 Arrow Function -Done
@@ -22,27 +22,27 @@ JIT Compiler --done
 the call stack of js --Done
 Scope - done
 Hoisting and tdz --Done
-this keyword
-regular vs arrow function
-Primitive and object types
+this keyword  -Done
+regular vs arrow function --Done
+Primitive and object types  -Done
 
-Destructuring
-Rest operator
-spread operator
-short circuiting and null coelessing
+Destructuring --Done
+Rest operator --Done
+spread operator --Done
+short circuiting and null coelessing -Done
 
-Looping Arrays and objects
+Looping Arrays and objects --Done
 
-Map, filter and reduce
+Map, filter and reduce --Done
 
 
- Advanced 
+Advanced 
 
 Functions :
 
-Arguments 
-first class and higher order function 
-function returning functions
+Arguments --Done
+first class and higher order function --Done
+function returning functions --Done
 the call and apply method
 the bind method
 immediately invoked function
@@ -58,8 +58,6 @@ error handling
 
 
 -----------------------------------------------
-
-
 Node js Questions :
 
 basic 
@@ -75,7 +73,6 @@ Blocking and Non-Blocking Code
 Node.js - Looking Behind the Scenes
 Using the Node Modules System
 
-
 Express: 
 
 What is Express.js?
@@ -85,7 +82,6 @@ Handling Different Routes
 Parsing Incoming Requests
 Limiting Middleware Execution to POST Requests
 What is the MVC?
-
 
 Session and cookies
 What is a Cookie?
