@@ -1,0 +1,55 @@
+DEFINITION :
+
+Event Loop is a core mechanism within the JavaScript runtime environment responsible for handling
+asynchronous operation It allows js to perform tasks without blocking main thread, facilatating non-blocking
+I/O oeprations.
+
+
+WHY WE NEED IT :
+
+- To handle asynchronous oeprations
+- to prevent main thread to be non blocking
+- to support concurrency
+- Efficiently utilzing the resources
+
+HOW IT WORKS (High Level) :
+- When a function is created, it remembers the lexical scope (variables available at creation time).
+
+- If this inner function is returned or used later, it still has access to those outer variables even after 
+  the outer function has executed.
+
+- JavaScript’s runtime keeps these variables in memory as long as the inner function needs them.
+
+KEY COMPONENTS :
+- Call Stack – The call stack is a LIFO (Last In, First Out) structure that stores the function calls 
+                currently being executed. When a function is called, it gets pushed onto the stack; 
+                upon completion, it is popped off.
+
+- Task Queue – The task queue stores all the tasks waiting to be executed, typically asynchronous 
+                operation callbacks like those from setTimeout, setInterval, and I/O operations. 
+                When the call stack is empty, the event loop takes a task from the task queue and pushes 
+                it onto the call stack.
+
+- Microtask Queue – The microtask queue stores all waiting microtasks, such as Promise callbacks and 
+                    MutationObserver callbacks. It has a higher priority than the task queue. 
+                    When the call stack is empty, the event loop first processes all tasks in the 
+                    microtask queue before handling those in the task queue.
+
+- Web API - 
+
+- Event Loop
+
+
+
+REAL WORLD USE CASES :
+---
+
+LIMITATIONS
+
+- CPU-Heavy Tasks Block the Thread
+- No True Parallel Execution of JS Code
+- Long-Running Tasks Reduce Responsiveness
+- Callback Queue Overload
+
+Syntax or Example:
+ --

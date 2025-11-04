@@ -1,0 +1,86 @@
+DEFINITION :
+
+A closure is a function that remember and access variable from its outer lexical scope even after
+that outer function as finished its execution.
+
+
+WHY WE NEED IT :
+
+1. To maintain state
+    - Closure allows to a function to remember its values of  outer functions even after execution is finished.
+
+2. To create a private variables (data encapsulation)
+    - Variable inside cannot be accessed from directly from outside providing controlled access
+
+3. usefull for function factories
+    - Helps create customized functions based on initial parameters.
+
+4. Essential in asynchronous programming
+    - Closures let callbacks access outer variables even when executed later (e.g., setTimeout, API calls).
+
+HOW IT WORKS (High Level) :
+- When a function is created, it remembers the lexical scope (variables available at creation time).
+
+- If this inner function is returned or used later, it still has access to those outer variables even after 
+  the outer function has executed.
+
+- JavaScript’s runtime keeps these variables in memory as long as the inner function needs them.
+
+KEY COMPONENTS :
+- Outer Function – defines variables
+
+- Inner Function – uses outer variables
+
+- Lexical Scope – the rules determining variable access
+
+- Persistent Memory – variables stay alive even after outer function ends
+
+REAL WORLD USE CASES :
+1. Data Privacy / Encapsulation
+− Protects variables from being accessed directly
+
+2. State Management
+− Maintain values across multiple function calls (e.g., counters)
+
+3. Function Factories
+− Create personalized functions with preset data
+
+4. Callbacks / Async Programming
+− Event handlers and timers can access outer variables
+
+5. Module Pattern
+− Group logic with private and public methods
+
+LIMITATIONS
+
+1. Memory Usage
+− Variables stay in memory longer because they’re “remembered”
+
+2. Hard to Debug
+− Tracking lexical scope can get tricky
+
+3. Overuse Makes Code Complex
+− Too many nested closures reduce readability
+
+4. Potential for Unintended Variable Sharing
+− If not handled properly, multiple closures may affect each other
+
+
+Syntax or Example:
+
+function outerFunction(){
+    let count = 0;
+
+    function innerFunction(){
+        count++
+        console.log(count)
+    }
+
+    return innerFunction;
+}
+
+const counter = outerFunction();
+
+counter() //1
+counter() //2
+counter() // 3
